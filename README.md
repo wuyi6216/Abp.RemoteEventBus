@@ -1,7 +1,7 @@
 # Abp.RemoteEventBus
 ## What’s this?
 
-受到[Abp](https://github.com/FJQBT/ABP)事件总线的灵感而开发的一个分布式的事件总线，可以跨应用触发事件。基于发布/订阅模式，消息的传递可以通过redis，rabbitmq，kafka等实现。你还能非常容易的实现你自己的方式通过实现指定接口。支持控制台和web应用。
+受到[Abp](https://github.com/FJQBT/ABP)事件总线的灵感而开发的一个分布式的事件总线，可以跨应用触发事件。基于发布/订阅模式，消息的传递可以通过redis，rabbitmq，kafka等实现。你还能非常容易的实现你自己的方式，通过实现指定接口。支持控制台和web应用。
 
 A distributed event bus, inspired by the [Abp](https://github.com/FJQBT/ABP) event bus, can trigger events across applications. Based on publish / subscribe mode, the message can be passed through redis, rabbitmq, kafka and so on. You can also very easily implement your own way by implementing the specified interface. Support in console and web applications.
 
@@ -31,11 +31,9 @@ A distributed event bus, inspired by the [Abp](https://github.com/FJQBT/ABP) eve
     }
 ```
 ### Configuration
-
+#### Use kafka
 ```
     [DependsOn(typeof(AbpRemoteEventBusKafkaModule))]
-    //[DependsOn(typeof(AbpRemoteEventBusRabbitMQModule))]
-    //[DependsOn(typeof(AbpRemoteEventBusRedisModule))]
     public class DemoModule : AbpModule
     {
         public override void Initialize()
@@ -52,17 +50,53 @@ A distributed event bus, inspired by the [Abp](https://github.com/FJQBT/ABP) eve
                 setting.Properties.Add("group.id", "App-Test");
             });
             
+            // enable auto subscribe
+            // will scan class which use RemoteEventHandlerAttribute and auto subscribe topic base the attribute info
+            Configuration.Modules.RemoteEventBus().AutoSubscribe();
+        }
+    }
+```
+#### Use RabbitMQ
+```
+    [DependsOn(typeof(AbpRemoteEventBusRabbitMQModule))]
+    public class DemoModule : AbpModule
+    {
+        public override void Initialize()
+        {
+            IocManager.RegisterAssemblyByConvention(typeof(DemoModule).GetAssembly());
+        }
+
+        public override void PostInitialize()
+        {
             // use rabbitmq
-            //Configuration.Modules.RemoteEventBus().UseRabbitMQ().Configure(setting =>
-            //{
+            Configuration.Modules.RemoteEventBus().UseRabbitMQ().Configure(setting =>
+            {
                 //setting.Url = "amqp://guest:guest@127.0.0.1:5672/";
-            //});
+            });
             
+            // enable auto subscribe
+            // will scan class which use RemoteEventHandlerAttribute and auto subscribe topic base the attribute info
+            Configuration.Modules.RemoteEventBus().AutoSubscribe();
+        }
+    }
+```
+#### Use Redis
+```
+    [DependsOn(typeof(AbpRemoteEventBusRedisModule))]
+    public class DemoModule : AbpModule
+    {
+        public override void Initialize()
+        {
+            IocManager.RegisterAssemblyByConvention(typeof(DemoModule).GetAssembly());
+        }
+
+        public override void PostInitialize()
+        {   
             // use redis
-            //Configuration.Modules.RemoteEventBus().UseRedis().Configure((setting) =>
-            //{
-            //    setting.Server = "127.0.0.1:6379";
-            //});
+            Configuration.Modules.RemoteEventBus().UseRedis().Configure((setting) =>
+            {
+                setting.Server = "127.0.0.1:6379";
+            });
             
             // enable auto subscribe
             // will scan class which use RemoteEventHandlerAttribute and auto subscribe topic base the attribute info
@@ -71,4 +105,7 @@ A distributed event bus, inspired by the [Abp](https://github.com/FJQBT/ABP) eve
     }
 ```
 ### Demo
-see Abp.RemoteEventBus.RabbitMQ.Test
+See [Abp.RemoteEventBus.RabbitMQ.Test](test/Abp.RemoteEventBus.RabbitMQ.Test)
+
+## How it work?
+[Here](doc/How%20it%20work.md)
