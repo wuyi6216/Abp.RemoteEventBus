@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Abp.RemoteEventBus\Abp.RemoteEventBus.csproj">
+      <Project>{5DB3A38F-FA87-4FF9-9B4D-2F842F111094}</Project>
+      <Name>Abp.RemoteEventBus</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Abp.RedisCache" Version="3.4.0" />
+  </ItemGroup>
+</Project>
