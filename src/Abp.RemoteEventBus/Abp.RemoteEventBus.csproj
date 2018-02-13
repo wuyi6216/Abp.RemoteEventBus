@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>A distributed event bus, inspired by the Abp event bus, can trigger events across applications.</Description>
+    <PackageProjectUrl>https://github.com/wuyi6216/Abp.RemoteEventBus</PackageProjectUrl>
+    <Authors>wuyi</Authors>
+    <Company />
+    <Product />
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Abp" Version="3.4.0" />

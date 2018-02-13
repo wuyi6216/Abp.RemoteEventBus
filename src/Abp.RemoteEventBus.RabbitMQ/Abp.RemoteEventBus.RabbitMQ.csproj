@@ -1,6 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>wuyi</Authors>
+    <Company />
+    <Product />
+    <PackageProjectUrl>https://github.com/wuyi6216/Abp.RemoteEventBus</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abp.RemoteEventBus\Abp.RemoteEventBus.csproj" />
