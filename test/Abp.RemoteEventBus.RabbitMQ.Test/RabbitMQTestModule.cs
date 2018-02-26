@@ -1,6 +1,5 @@
 ﻿using Abp.Modules;
 using Abp.Reflection.Extensions;
-using Abp.RemoteEventBus.Redis;
 
 namespace Abp.RemoteEventBus.RabbitMQ.Test
 {

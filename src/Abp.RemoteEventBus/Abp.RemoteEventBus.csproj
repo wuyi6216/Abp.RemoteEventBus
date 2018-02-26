@@ -6,6 +6,7 @@
     <Authors>wuyi</Authors>
     <Company />
     <Product />
+    <Version>1.0.1</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Abp" Version="3.4.0" />

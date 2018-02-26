@@ -5,6 +5,8 @@
     <Company />
     <Product />
     <PackageProjectUrl>https://github.com/wuyi6216/Abp.RemoteEventBus</PackageProjectUrl>
+    <Description>Use RabbitMQ for Abp.RemoteEventBus</Description>
+    <Version>1.0.1</Version>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abp.RemoteEventBus\Abp.RemoteEventBus.csproj" />

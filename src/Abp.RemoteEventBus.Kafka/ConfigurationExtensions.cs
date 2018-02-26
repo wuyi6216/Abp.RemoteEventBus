@@ -3,7 +3,7 @@ using Abp.Dependency;
 using Abp.RemoteEventBus.Kafka;
 using Castle.MicroKernel.Registration;
 
-namespace Abp.RemoteEventBus.RabbitMQ
+namespace Abp.RemoteEventBus.Kafka
 {
     public static class ConfigurationExtensions
     {

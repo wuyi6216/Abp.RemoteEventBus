@@ -1,7 +1,7 @@
 ﻿using Abp.Modules;
 using Abp.Reflection.Extensions;
 
-namespace Abp.RemoteEventBus.Redis
+namespace Abp.RemoteEventBus.Kafka
 {
     [DependsOn(typeof(AbpRemoteEventBusModule))]
     public class AbpRemoteEventBusKafkaModule: AbpModule
